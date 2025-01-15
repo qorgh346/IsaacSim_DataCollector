@@ -24,7 +24,7 @@
 
 ## ROS 기반 로봇 제어 프로세스
 
-![시퀀스 다이어그램](시퀀스 다이어그램 삽입.png)
+![Data Collector Structure](assets/Process.png)
 
 ### 1) ROS Service Server
 - **역할**: 로봇의 동작 요청을 처리하고, 콜백 함수로 제어 명령을 실행
