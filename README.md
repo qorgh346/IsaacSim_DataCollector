@@ -69,36 +69,36 @@
 
 ## 📂 Directory Structure
 
-  
-  ┣ src
-  ┃ ┣ collect_data                       
-  ┃ ┃ ┣ dataset                         # 수집된 데이터 저장 폴더
-  ┃ ┃ ┃ ┣ armlift_data                  # AMR 관련 데이터
-  ┃ ┃ ┃ ┃ ┗ data_0.json                 
-  ┃ ┃ ┃ ┗ palletizer_data              # Palletizer 관련 데이터
-  ┃ ┃ ┃   ┗ data_0.json                 
-  ┃ ┃ ┣ msg                            # 사용자 정의 메시지 파일
-  ┃ ┃ ┃ ┗ ...                           
-  ┃ ┃ ┣ scripts                         
-  ┃ ┃ ┃ ┣ armlift_data_collector.py    # AMR 데이터 수집 스크립트
-  ┃ ┃ ┃ ┣ realtime_palletizer_collector.py # Palletizer 데이터 수집 스크립트
-  ┃ ┃ ┃ ┣ Relation_Generation.py       # 관계 데이터 생성 스크립트
-  ┃ ┃ ┃ ┗ ...                           
-  ┃ ┃ ┣ srv                             
-  ┃ ┃ ┃ ┗ PalletService_kgu.srv        # Pallet 서비스 정의                   
-  ┃ ┗ robot_controller                  
-  ┃ ┃ ┣ launch                         
-  ┃ ┃ ┃ ┗ robot_controller_demo.launch # 로봇 제어 데모 실행 파일
-  ┃ ┃ ┣ scripts                         
-  ┃ ┃ ┃ ┣ RobotController_Client.py   # 클라이언트 노드
-  ┃ ┃ ┃ ┣ RobotController_Server.py   # 서버 노드
-  ┃ ┃ ┃ ┗ ...                          
-  ┃ ┃ ┣ srv                            # 로봇 제어 서비스 정의
-  ┃ ┃ ┃ ┣ LiftService.srv              # 리프트 동작 서비스
-  ┃ ┃ ┃ ┣ MoveToNodeService.srv        # 노드 이동 서비스
-  ┃ ┃ ┃ ┗ ...                          
-  ┣ utils                               
-  ┃ ┗ demo_vertex.json                 # 노드와 경로 정보 파일
+    
+    ┣ src
+    ┃ ┣ collect_data                       
+    ┃ ┃ ┣ dataset                         # 수집된 데이터 저장 폴더
+    ┃ ┃ ┃ ┣ armlift_data                  # AMR 관련 데이터
+    ┃ ┃ ┃ ┃ ┗ data_0.json                 
+    ┃ ┃ ┃ ┗ palletizer_data              # Palletizer 관련 데이터
+    ┃ ┃ ┃   ┗ data_0.json                 
+    ┃ ┃ ┣ msg                            # 사용자 정의 메시지 파일
+    ┃ ┃ ┃ ┗ ...                           
+    ┃ ┃ ┣ scripts                         
+    ┃ ┃ ┃ ┣ armlift_data_collector.py    # AMR 데이터 수집 스크립트
+    ┃ ┃ ┃ ┣ realtime_palletizer_collector.py # Palletizer 데이터 수집 스크립트
+    ┃ ┃ ┃ ┣ Relation_Generation.py       # 관계 데이터 생성 스크립트
+    ┃ ┃ ┃ ┗ ...                           
+    ┃ ┃ ┣ srv                             
+    ┃ ┃ ┃ ┗ PalletService_kgu.srv        # Pallet 서비스 정의                   
+    ┃ ┗ robot_controller                  
+    ┃ ┃ ┣ launch                         
+    ┃ ┃ ┃ ┗ robot_controller_demo.launch # 로봇 제어 데모 실행 파일
+    ┃ ┃ ┣ scripts                         
+    ┃ ┃ ┃ ┣ RobotController_Client.py   # 클라이언트 노드
+    ┃ ┃ ┃ ┣ RobotController_Server.py   # 서버 노드
+    ┃ ┃ ┃ ┗ ...                          
+    ┃ ┃ ┣ srv                            # 로봇 제어 서비스 정의
+    ┃ ┃ ┃ ┣ LiftService.srv              # 리프트 동작 서비스
+    ┃ ┃ ┃ ┣ MoveToNodeService.srv        # 노드 이동 서비스
+    ┃ ┃ ┃ ┗ ...                          
+    ┣ utils                               
+    ┃ ┗ demo_vertex.json                 # 노드와 경로 정보 파일
 
 
 ---
