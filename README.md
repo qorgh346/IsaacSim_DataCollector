@@ -71,38 +71,76 @@
 
 ---
 
-## 4. Dependencies
+## Dependencies
 
-### 설치 환경
+## **1. Ubuntu 20.04에 ROS Noetic 설치**
+
+- 공식 문서: [ROS Noetic 설치](https://wiki.ros.org/noetic/Installation/Ubuntu)
+
 ```bash
-conda create -n gcmAgent python=3.8
-conda activate gcmAgent
-pip install -r requirements.txt
-pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
-pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.12.1+cu113.html
+# 1. 시스템 업데이트 & 필수 패키지 설치
+sudo apt update
+sudo apt install curl gnupg2 lsb-release
+
+# 2. ROS 패키지 저장소 키 추가
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+
+# 3. ROS 패키지 저장소 추가
+echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/ros-latest.list
+
+# 4. ROS Noetic 설치
+sudo apt update
+sudo apt install ros-noetic-desktop-full
+
+# 5. ROS 환경 설정
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
 ```
+
+## **2. Nvidia Isaac Sim 설치**
+
+- 공식 문서: [Isaac Sim 설치](https://docs.omniverse.nvidia.com/isaacsim/latest/index.html)
+
+1. NVIDIA Omniverse Launcher 설치 후 실행.
+2. 설치 후, "Launch" 버튼으로 Isaac Sim 실행.
 
 ---
 
-## 5. 실행 방법 (Run Code)
+## Run Code
 
-### 1) 로봇 컨트롤러 서버 실행
+### **ROS 빌드 및 실행**
+
+```bash
+cd ~/IsaacSIM_DataCollector
+source /opt/ros/noetic/setup.bash
+```
+```bash
+catkin_make
+```
+
+### **환경 설정**
+```bash
+source devel/setup.bash
+```
+
+### **ROS 노드 실행**
+
+#### **로봇 제어 런쳐 파일 실행**
 ```bash
 roslaunch robot_controller robot_controller_demo.launch
 ```
 
-### 2) 데이터 수집 실행
+#### **데이터 수집 실행**
 ```bash
 rosrun collect_data armlift_data_collector.py
+rosrun collect_data realtime_palletizer_collector.py
 ```
-
-### 3) 작업 시뮬레이션 실행
-- Isaac Sim에서 **Perform Task** 버튼 클릭 후 작업 시작.
-
 ---
 
-## 6. 샘플 데이터
+## 샘플 데이터
 - https://drive.google.com/drive/folders/18LOFXwgLkA0uHBGINbNrSTUnqBiNilys?usp=sharing
+
+---
 
 ## 데모 ~
 
