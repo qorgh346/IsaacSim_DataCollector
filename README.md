@@ -47,29 +47,9 @@
 
 ---
 
-# Isaac Sim을 활용한 데이터 수집 및 로봇 제어
-
-## **프로젝트 개요**
-
-이 프로젝트는 Nvidia Isaac Sim과 ROS를 연동하여 **AMR(Autonomous Mobile Robot)**과 Palletizer의 주행 및 작업 제어를 구현하고, 작업 중 생성되는 데이터를 실시간으로 수집하는 것을 목표로 합니다. 수집된 데이터는 JSON 형태로 저장되어 머신러닝 모델의 학습 및 평가에 활용됩니다.
-
----
-
-## **주요 기능 (Key Features)**
-
-1. **AMR과 Palletizer 로봇 협업 작업 구현**
-   - Nvidia Isaac Sim과 ROS를 연동하여 상자 적재 및 운반 작업 자동화.
-   - Palletizer는 상자를 집어 팔렛에 적재하며, AMR은 팔렛을 목표 위치로 운반.
-
-2. **실시간 데이터 수집**
-   - 로봇과 환경 구성 물체의 상태 데이터를 수집하여 JSON 형식으로 저장.
-   - ROS 토픽 및 서비스를 활용하여 데이터를 실시간으로 저장 및 관리.
-
----
-
 ## 📂 Directory Structure
 
-    
+
     ┣ src
     ┃ ┣ collect_data                       
     ┃ ┃ ┣ dataset                         # 수집된 데이터 저장 폴더
@@ -179,6 +159,8 @@ rosrun collect_data realtime_palletizer_collector.py
 
 ---
 
-## 데모 ~
+## Isaac Sim을 활용한 데이터 수집 영상
+
+[![Project Demo](https://img.youtube.com/vi/jCcJfXtFD5w/0.jpg)](https://www.youtube.com/watch?v=jCcJfXtFD5w)
 
 ---
