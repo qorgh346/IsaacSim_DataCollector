@@ -103,10 +103,13 @@ source ~/.bashrc
 
 1. NVIDIA Omniverse Launcher 설치 후 실행.
 2. 설치 후, "Launch" 버튼으로 Isaac Sim 실행.
-
+3. usd File Open -> IsaacSIM_DataCollector/Potenit_Warehouse_flat.usd 
 ---
 
 ## Run Code
+
+### Isaac Start
+- Start Button & Ros Start 버튼 활성화화
 
 ### **ROS 빌드 및 실행**
 
@@ -124,7 +127,9 @@ source devel/setup.bash
 ```
 
 ### **ROS 노드 실행**
-
+```bash
+roscore
+```
 #### **로봇 제어 런쳐 파일 실행**
 ```bash
 roslaunch robot_controller robot_controller_demo.launch
