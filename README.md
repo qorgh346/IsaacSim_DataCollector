@@ -47,27 +47,59 @@
 
 ---
 
+# Isaac Sim을 활용한 데이터 수집 및 로봇 제어
+
+## **프로젝트 개요**
+
+이 프로젝트는 Nvidia Isaac Sim과 ROS를 연동하여 **AMR(Autonomous Mobile Robot)**과 Palletizer의 주행 및 작업 제어를 구현하고, 작업 중 생성되는 데이터를 실시간으로 수집하는 것을 목표로 합니다. 수집된 데이터는 JSON 형태로 저장되어 머신러닝 모델의 학습 및 평가에 활용됩니다.
+
+---
+
+## **주요 기능 (Key Features)**
+
+1. **AMR과 Palletizer 로봇 협업 작업 구현**
+   - Nvidia Isaac Sim과 ROS를 연동하여 상자 적재 및 운반 작업 자동화.
+   - Palletizer는 상자를 집어 팔렛에 적재하며, AMR은 팔렛을 목표 위치로 운반.
+
+2. **실시간 데이터 수집**
+   - 로봇과 환경 구성 물체의 상태 데이터를 수집하여 JSON 형식으로 저장.
+   - ROS 토픽 및 서비스를 활용하여 데이터를 실시간으로 저장 및 관리.
+
+---
+
 ## 📂 Directory Structure
 
-    ├── datasets/                        # 데이터 로더
-    │   ├── GCMDataLoader.py             
-    │   ├── raw/                         # 원본 데이터
-    │   │   ├── Isaac/                   # Isaac 데이터셋
-    │   │   └── MOS/                     # MOS 데이터셋
-    ├── models/                          # 네트워크 모델 정의
-    │   ├── CloudGCM_Network.py          
-    │   ├── network_RelNet.py            
-    │   ├── TripleNetGCN.py              # TripleNet GCN 모델
-    │   ├── TT_GCN.py                    
-    │   └── utils/                       
-    │       ├── Graph_Vis.py             # 그래프 시각화 코드
-    │       ├── visualization.py         # 시각화 유틸리티
-    │       └── op_utils.py              
-    ├── rule_based_contextManager/       # 규칙 기반 맥락 추론 모듈
-    │   └── RuleContextManager.py        
-    ├── data_collecter/                  # 데이터 수집 모듈
-    │   └── DataCollecter.py             
-    ├── GCM_main.py                      # 메인 실행 스크립트
+  
+  ┣ src
+  ┃ ┣ collect_data                       
+  ┃ ┃ ┣ dataset                         # 수집된 데이터 저장 폴더
+  ┃ ┃ ┃ ┣ armlift_data                  # AMR 관련 데이터
+  ┃ ┃ ┃ ┃ ┗ data_0.json                 
+  ┃ ┃ ┃ ┗ palletizer_data              # Palletizer 관련 데이터
+  ┃ ┃ ┃   ┗ data_0.json                 
+  ┃ ┃ ┣ msg                            # 사용자 정의 메시지 파일
+  ┃ ┃ ┃ ┗ ...                           
+  ┃ ┃ ┣ scripts                         
+  ┃ ┃ ┃ ┣ armlift_data_collector.py    # AMR 데이터 수집 스크립트
+  ┃ ┃ ┃ ┣ realtime_palletizer_collector.py # Palletizer 데이터 수집 스크립트
+  ┃ ┃ ┃ ┣ Relation_Generation.py       # 관계 데이터 생성 스크립트
+  ┃ ┃ ┃ ┗ ...                           
+  ┃ ┃ ┣ srv                             
+  ┃ ┃ ┃ ┗ PalletService_kgu.srv        # Pallet 서비스 정의                   
+  ┃ ┗ robot_controller                  
+  ┃ ┃ ┣ launch                         
+  ┃ ┃ ┃ ┗ robot_controller_demo.launch # 로봇 제어 데모 실행 파일
+  ┃ ┃ ┣ scripts                         
+  ┃ ┃ ┃ ┣ RobotController_Client.py   # 클라이언트 노드
+  ┃ ┃ ┃ ┣ RobotController_Server.py   # 서버 노드
+  ┃ ┃ ┃ ┗ ...                          
+  ┃ ┃ ┣ srv                            # 로봇 제어 서비스 정의
+  ┃ ┃ ┃ ┣ LiftService.srv              # 리프트 동작 서비스
+  ┃ ┃ ┃ ┣ MoveToNodeService.srv        # 노드 이동 서비스
+  ┃ ┃ ┃ ┗ ...                          
+  ┣ utils                               
+  ┃ ┗ demo_vertex.json                 # 노드와 경로 정보 파일
+
 
 ---
 
@@ -101,15 +133,15 @@ source ~/.bashrc
 
 - 공식 문서: [Isaac Sim 설치](https://docs.omniverse.nvidia.com/isaacsim/latest/index.html)
 
-1. NVIDIA Omniverse Launcher 설치 후 실행.
-2. 설치 후, "Launch" 버튼으로 Isaac Sim 실행.
+1. NVIDIA Omniverse Launcher 설치 후 실행
+2. 설치 후, "Launch" 버튼으로 Isaac Sim 실행
 3. usd File Open -> IsaacSIM_DataCollector/Potenit_Warehouse_flat.usd 
 ---
 
 ## Run Code
 
-### Isaac Start
-- Start Button & Ros Start 버튼 활성화화
+### Isaac SIM Start
+- Start Button & Ros Start 버튼 활성화
 
 ### **ROS 빌드 및 실행**
 
