@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="robot_controller" type="RobotController_Client.py" name="move_client"/>
+	<node pkg="robot_controller" type="RobotController_Server.py" name="move_server"/>
+</launch>
