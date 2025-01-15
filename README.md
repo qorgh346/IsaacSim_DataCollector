@@ -101,6 +101,9 @@ rosrun collect_data armlift_data_collector.py
 
 ---
 
+## 6. 샘플 데이터
+- https://drive.google.com/drive/folders/18LOFXwgLkA0uHBGINbNrSTUnqBiNilys?usp=sharing
+
 ## 데모 ~
 
 ---
