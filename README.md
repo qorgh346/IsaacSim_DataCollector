@@ -1,6 +1,6 @@
 # Nvidia Isaac Sim을 활용한 로봇 제어 및 데이터 수집
 
-![대표 사진](대표 사진.png)
+![Data Collector Structure](assets/DataCollector.png)
 
 ---
 
